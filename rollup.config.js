@@ -14,7 +14,10 @@ export default {
     flow(),
     peerDepsExternal(),
     resolve(),
-    babel({ babelHelpers: 'bundled' }),
+    babel({
+      babelHelpers: 'bundled',
+      exclude: 'node_modules/**',
+    }),
     terser(),
     commonjs(),
   ],
