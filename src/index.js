@@ -52,24 +52,34 @@ function _composeAuthenticatedURL(linkUri: string, token: string): URL {
 }
 
 function _createLinkModal(href: string) {
+  const mobileMedia = window.matchMedia('(max-width: 576px)');
+
   const overlay = window.document.createElement('div');
   overlay.id = METHOD_LINK_MODAL_ID;
   overlay.style.position = 'fixed';
   overlay.style.backgroundColor = 'rgba(144, 144, 144, 0.98)';
-  overlay.style.width = '100vw';
-  overlay.style.height = '100vh';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
   overlay.style.zIndex = 999999999;
   overlay.style.display = 'flex';
-  overlay.style.justifyContent = 'center';
-  overlay.style.alignItems = 'center';
+  overlay.style.flexDirection = 'column';
+  overlay.style.overflowX = 'hidden';
+  overlay.style.overflowY = 'visible';
   overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.margin = 0;
+  overlay.style.margin = 0;
+  overlay.style.paddingTop = mobileMedia.matches ? 0 : '2%';
+  overlay.style.paddingBottom = mobileMedia.matches ? 0 : '4%';
 
   const iframe = window.document.createElement('iframe');
   iframe.src = href;
   iframe.frameBorder = '0';
   iframe.style.borderRadius = '4px';
-  iframe.style.height = '650px';
-  iframe.style.width = '360px';
+  iframe.style.height = mobileMedia.matches ? '100%' : '650px';
+  iframe.style.width = mobileMedia.matches ? '100%' :'360px';
+  iframe.style.margin = 'auto';
+  iframe.style.flex = '0 0 auto';
 
   overlay.appendChild(iframe);
   return overlay;
