@@ -21,7 +21,7 @@ const App = () => {
   };
 
   const { openWithToken } = useMethodLink({
-    env: 'sandbox', // Defaults to 'sandbox'. Use 'production' when you're ready to go live.
+    env: 'dev', // Defaults to 'dev'. Use 'production' when you're ready to go live.
     onOpen: () => {},
     onExit: () => {},
     onError: (error) => {},
