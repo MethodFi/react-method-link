@@ -2,7 +2,7 @@
 import { useEffect } from 'react';
 
 const METHOD_LINK_MODAL_ID = 'method-link-modal-id';
-const ENV_TYPES = { sandbox: 'sandbox', production: 'production' };
+const ENV_TYPES = { dev: 'dev', sandbox: 'sandbox', production: 'production' };
 const EVENT_CHANNEL_TYPES = { message: 'message', redirect: 'redirect' };
 const LINK_MESSAGE_DATA_TYPES = {
   open: 'open',
@@ -31,11 +31,14 @@ const _eventNoop = (_?: TLinkMessageDataPayload) => {};
 
 function _getEnv(env: TLinkEnvTypes): TLinkEnvConfig {
   switch (env) {
+    case ENV_TYPES.sandbox: return {
+      linkUri: 'https://link.sandbox.methodfi.com',
+    };
     case ENV_TYPES.production: return {
       linkUri: 'https://link.production.methodfi.com',
     };
     default: return {
-      linkUri: 'https://link.sandbox.methodfi.com',
+      linkUri: 'https://link.dev.methodfi.com',
     };
   }
 }
