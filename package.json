@@ -1,6 +1,6 @@
 {
   "name": "react-method-link",
-  "version": "1.0.3",
+  "version": "1.0.5",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
